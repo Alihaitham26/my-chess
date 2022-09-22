@@ -11,3 +11,5 @@ for(let i=0;i<LETTERS.length;i++){
     }
 }
 let board=new Board(htmlSquares)
+document.getElementById("undo").onclick=board.undo
+document.getElementById("reset").onclick=board.reset

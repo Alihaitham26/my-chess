@@ -23,6 +23,8 @@ class Board{
     constructor(htmlSquares,boardMap=Board.initBoardMap){
         this.htmlSquares=htmlSquares
         this.reset(boardMap)
+        this.undo=this.undo.bind(this)
+        this.reset=this.reset.bind(this)
     }
     draw(){
         for(let position in this.htmlSquares){
@@ -50,8 +52,8 @@ class Board{
             this.draw()
         }
     }
-    reset(boardMap){
-        this.map=boardMap||Board.initBoardMap
+    reset(){
+        this.map=Board.initBoardMap
         this.mapLog=[]
         this.draw()
     }
