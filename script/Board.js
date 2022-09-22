@@ -22,17 +22,34 @@ class Board{
     }
     constructor(htmlSquares,boardMap=Board.initBoardMap){
         this.htmlSquares=htmlSquares
-        this.boardMap=boardMap
+        this.map=boardMap
+        this.mapLog=[]
         this.draw()
     }
     draw(){
-        for(let position in this.boardMap){
-            if(this.boardMap[position]){
-                let piece=this.boardMap[position]
+        for(let position in this.htmlSquares){
+            this.htmlSquares[position].innerHTML=null
+            if(this.map[position]){
+                let piece=this.map[position]
                 let img=document.createElement("img")
                 img.src="assist/"+piece.img
                 this.htmlSquares[position].appendChild(img)
             }
+        }
+    }
+    move(from,to){
+        if(this.map[from]){
+            this.mapLog.push(Object.assign({},this.map))
+            this.map[to]=this.map[from]
+            delete this.map[from]
+            this.map[to].movesLog.push(to)
+            this.draw()
+        }
+    }
+    undo(){
+        if(this.mapLog.length>0){
+            this.map=this.mapLog.pop()
+            this.draw()
         }
     }
 }

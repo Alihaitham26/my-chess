@@ -8,7 +8,7 @@ class Piece{
         }
         this.type=type
         this.isWhite=isWhite
-        this.positionsLog=[]
+        this.movesLog=[]
         this.img=`${isWhite?"w":"b"}_${type}.png`
     }
     move(position){
