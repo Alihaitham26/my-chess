@@ -4,7 +4,7 @@ let htmlSquares=[]
 for(let i=0;i<LETTERS.length;i++){
     for(let j=1;j<=8;j++){
         let square=document.createElement("div")
-        square.classList.add("square",((j/2)%1)===0?"even":"odd")
+        square.classList.add("square",(((j+i)/2)%1)===0?"black":"white")
         square.dataset.position=LETTERS[i]+j
         BOARD.appendChild(square)
         htmlSquares.push(square)
