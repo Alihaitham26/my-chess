@@ -28,6 +28,17 @@ function toggleTheme(){
     }
 }
 
+
+let positionRegex=/^[a-h][1-8]$/
+let isOn=position=>positionRegex.test(position)
+function moveOnBoard(position,x,y){
+    /*  fuction to convert position that type in letter and number to x,y 
+        then move on x,y then reconvert it 
+        and check if this position in the board */
+    let newPosition=LETTERS[LETTERS.indexOf(position[0])+x]+(+position[1]+y)
+    return isOn(newPosition)?newPosition:false 
+}
+
 // set downbar buttons onclick
 document.getElementById("undo").onclick=board.undo
 document.getElementById("theme").onclick=toggleTheme
