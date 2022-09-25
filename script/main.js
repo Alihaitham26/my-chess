@@ -15,6 +15,10 @@ document.getElementById("undo").onclick=board.undo
 document.getElementById("theme").onclick=toggleTheme
 document.getElementById("reset").onclick=board.reset
 function toggleTheme(){
-    document.body.classList.toggle("dark")
-    document.body.classList.toggle("light")
+    if(!document.body.classList.toggle("dark")){
+        document.getElementById("themeImg").src="assist/moon-solid.svg"
+    }
+    else if(!document.body.classList.toggle("light")){
+        document.getElementById("themeImg").src="assist/sun-solid.svg"
+    }
 }
