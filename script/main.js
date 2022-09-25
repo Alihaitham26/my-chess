@@ -15,10 +15,14 @@ document.getElementById("undo").onclick=board.undo
 document.getElementById("theme").onclick=toggleTheme
 document.getElementById("reset").onclick=board.reset
 function toggleTheme(){
-    if(!document.body.classList.toggle("dark")){
-        document.getElementById("themeImg").src="assist/moon-solid.svg"
-    }
-    else if(!document.body.classList.toggle("light")){
+    if(document.body.classList.contains("light")){
+        document.body.classList.remove("light")
+        document.body.classList.add("dark")
         document.getElementById("themeImg").src="assist/sun-solid.svg"
+    }
+    else if(document.body.classList.contains("dark")){
+        document.body.classList.remove("dark")
+        document.body.classList.add("light")
+        document.getElementById("themeImg").src="assist/moon-solid.svg"
     }
 }
