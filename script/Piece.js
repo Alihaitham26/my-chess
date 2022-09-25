@@ -1,6 +1,7 @@
 class Piece{
     static types=["pawn","rook","knight","bishop","queen","king"]
     constructor(type,isWhite){
+        //make errors to help in find the issue
         if(!Piece.types.includes(type)){
             throw new Error(`${type} is not a piece type`)
         }else if(typeof(isWhite) !== "boolean"){
@@ -12,6 +13,7 @@ class Piece{
         this.img=`${isWhite?"w":"b"}_${type}.png`
     }
     move(position){
+        // save last move to use it in special move
         this.positionsLog.push(position)
     }
 }

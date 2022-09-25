@@ -1,5 +1,7 @@
 const BOARD = document.querySelector(".board")
 const LETTERS = ['a','b','c','d','e','f','g','h']
+
+// use loop to create html squres and store in array instead of make it by html then store it in js
 let htmlSquares={}
 for(let i=0;i<LETTERS.length;i++){
     for(let j=1;j<=8;j++){
@@ -11,10 +13,9 @@ for(let i=0;i<LETTERS.length;i++){
     }
 }
 let board=new Board(htmlSquares)
-document.getElementById("undo").onclick=board.undo
-document.getElementById("theme").onclick=toggleTheme
-document.getElementById("reset").onclick=board.reset
+
 function toggleTheme(){
+    //toggle theme betwen dark and light and set btn img
     if(document.body.classList.contains("light")){
         document.body.classList.remove("light")
         document.body.classList.add("dark")
@@ -26,3 +27,8 @@ function toggleTheme(){
         document.getElementById("themeImg").src="assist/moon-solid.svg"
     }
 }
+
+// set downbar buttons onclick
+document.getElementById("undo").onclick=board.undo
+document.getElementById("theme").onclick=toggleTheme
+document.getElementById("reset").onclick=board.reset

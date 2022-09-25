@@ -1,4 +1,5 @@
 class Board{
+    //static function to draw the start chess map
     static get initBoardMap(){
         let boardMap={}
         const LETTERS = ['a','b','c','d','e','f','g','h']
@@ -20,12 +21,16 @@ class Board{
         }
         return boardMap
     }
+
+
     constructor(htmlSquares,boardMap=Board.initBoardMap){
         this.htmlSquares=htmlSquares
         this.reset(boardMap)
+        //use bind to use it onclick
         this.undo=this.undo.bind(this)
         this.reset=this.reset.bind(this)
     }
+
     draw(){
         for(let position in this.htmlSquares){
             this.htmlSquares[position].innerHTML=null
@@ -39,6 +44,7 @@ class Board{
     }
     move(from,to){
         if(this.map[from]){
+            //edit the map,replace from square with to square,before that clone the map to use it in undo
             this.mapLog.push(Object.assign({},this.map))
             this.map[to]=this.map[from]
             delete this.map[from]
@@ -53,6 +59,7 @@ class Board{
         }
     }
     reset(){
+        // reset variables that control the game proggress 
         this.map=Board.initBoardMap
         this.mapLog=[]
         this.draw()
