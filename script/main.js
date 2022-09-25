@@ -12,4 +12,9 @@ for(let i=0;i<LETTERS.length;i++){
 }
 let board=new Board(htmlSquares)
 document.getElementById("undo").onclick=board.undo
+document.getElementById("theme").onclick=toggleTheme
 document.getElementById("reset").onclick=board.reset
+function toggleTheme(){
+    document.body.classList.toggle("dark")
+    document.body.classList.toggle("light")
+}

@@ -4,6 +4,27 @@
 h1{
     text-align: center;
 }
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.light{
+    background-color: #eee;
+    .downbar{
+        background-color: #fff;
+    }
+}
+.dark{
+    background-color: #555;
+    h1{
+        color: white;
+    }
+    .downbar{
+        background-color: #222;
+        button{
+            background-color: #aaa;
+        }
+    }
+}
 .container{
     display: block;
     margin: {
@@ -42,10 +63,12 @@ h1{
         }
     }
     .downbar{
+        
         display: flex;
         padding: 0 10px;
         justify-content: space-between;
         button{
+            
             width: 50px;
             height: 50px;
             border: none;
