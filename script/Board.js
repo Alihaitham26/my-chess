@@ -29,8 +29,14 @@ class Board{
         //use bind to use it onclick
         this.undo=this.undo.bind(this)
         this.reset=this.reset.bind(this)
+        this.handleClick=this.handleClick.bind(this)
     }
-
+    handleClick(position) {
+        if (this.map[position]) {
+            let availableMoves=getAvailableMoves(this.map, position)
+            console.log(availableMoves)
+       }
+    }
     draw(){
         for(let position in this.htmlSquares){
             this.htmlSquares[position].innerHTML=null
@@ -40,6 +46,7 @@ class Board{
                 img.src="assist/"+piece.img
                 this.htmlSquares[position].appendChild(img)
             }
+            this.htmlSquares[position].onclick = () => { this.handleClick(position) }
         }
     }
     move(from,to){
