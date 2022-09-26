@@ -32,9 +32,12 @@ class Board{
         this.handleClick=this.handleClick.bind(this)
     }
     handleClick(position) {
+        for(let square in this.htmlSquares){
+            this.htmlSquares[square].classList.remove("dot")
+        }
         if (this.map[position]) {
             let availableMoves=getAvailableMoves(this.map, position)
-            console.log(availableMoves)
+            availableMoves.forEach(move=>{this.htmlSquares[move].classList.add("dot")})
        }
     }
     draw(){
