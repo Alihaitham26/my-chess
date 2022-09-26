@@ -39,6 +39,12 @@ function moveOnBoard(position,x,y){
     return isOn(newPosition)?newPosition:false 
 }
 
+document.addEventListener("keypress",ev=>{
+    console.log(ev.code)
+    if(ev.code==="KeyT"){
+        toggleTheme()
+    }
+})
 // set downbar buttons onclick
 document.getElementById("undo").onclick=board.undo
 document.getElementById("theme").onclick=toggleTheme
