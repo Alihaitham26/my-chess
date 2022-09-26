@@ -6,7 +6,7 @@ let htmlSquares={}
 for(let i=0;i<LETTERS.length;i++){
     for(let j=1;j<=8;j++){
         let square=document.createElement("div")
-        square.classList.add("square",(((j+i)/2)%1)===0?"black":"white")
+        square.classList.add("square",(((j+i)/2)%1)===0?"white":"black")
         square.dataset.position=LETTERS[i]+j
         BOARD.appendChild(square)
         htmlSquares[LETTERS[i]+j]=square
