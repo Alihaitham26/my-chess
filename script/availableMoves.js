@@ -5,7 +5,7 @@ function getAvailableMoves(boardMap, position) {
         let y=yDirection
         let moves=[]
         let nextMove=moveOnBoard(position,x,y)
-        while(nextMove&&!boardMap[nextMove]){
+        while(nextMove&&((!boardMap[nextMove])||(boardMap[nextMove]&&boardMap[nextMove].isWhite!==piece.isWhite))){
             moves.push(nextMove)
             x+=xDirection
             y+=yDirection
@@ -62,7 +62,9 @@ function getAvailableMoves(boardMap, position) {
             break
         case "king":
             let kingMoves=[moveOnBoard(position,1,1),moveOnBoard(position,-1,-1),moveOnBoard(position,-1,1),moveOnBoard(position,1,-1),moveOnBoard(position,1,0),moveOnBoard(position,0,1),moveOnBoard(position,-1,0),moveOnBoard(position,0,-1)]
-            kingMoves.filter(move=>move&&!boardMap[move]).forEach(move=>{availableMoves.push(move)})
+            kingMoves.filter(move=>
+                    move&&((!boardMap[move])||(boardMap[move]&&boardMap[move].isWhite!==piece.isWhite))
+                ).forEach(move=>{availableMoves.push(move)})
     }
     return availableMoves
 }
