@@ -1,5 +1,5 @@
 function getAvailableMoves(boardMap, position) {
-    let getMovesArray=(xDirection,yDirection)=>{
+    letmoveOnBoardgetMovesArray=(xDirection,yDirection)=>{
         //function to move in x or/and y untill find peice so that stop and return moves
         let x=xDirection
         let y=yDirection
@@ -61,8 +61,8 @@ function getAvailableMoves(boardMap, position) {
             availableMoves=[...getMovesArray(1,1),...getMovesArray(-1,-1),...getMovesArray(-1,1),...getMovesArray(1,-1),...getMovesArray(1,0),...getMovesArray(0,1),...getMovesArray(-1,0),...getMovesArray(0,-1)]
             break
         case "king":
-            console.log(type)
-            break
+            let kingMoves=[moveOnBoard(position,1,1),moveOnBoard(position,-1,-1),moveOnBoard(position,-1,1),moveOnBoard(position,1,-1),moveOnBoard(position,1,0),moveOnBoard(position,0,1),moveOnBoard(position,-1,0),moveOnBoard(position,0,-1)]
+            kingMoves.filter(move=>move&&!boardMap[move]).forEach(move=>{availableMoves.push(move)})
     }
     return availableMoves
 }
