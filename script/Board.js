@@ -25,12 +25,12 @@ class Board{
 
     constructor(htmlSquares,boardMap=Board.initBoardMap){
         this.htmlSquares=htmlSquares
+        this.turnViewer=document.getElementById("turn-viewer")
         this.reset(boardMap)
         //use bind to use it onclick
         this.undo=this.undo.bind(this)
         this.reset=this.reset.bind(this)
         this.handleClick=this.handleClick.bind(this)
-        this.turnViewer=document.getElementById("turn-viewer")
     }
     selectedPosition
     availableMoves
@@ -85,6 +85,7 @@ class Board{
     reset(){
         // reset variables that control the game proggress
         this.isWhiteTurn=true
+        this.turnViewer.innerText="white turn"
         this.map=Board.initBoardMap
         this.mapLog=[]
         this.draw()
@@ -99,10 +100,10 @@ class Board{
             }
         }
         if(!isWhiteKingAlive){
-            alert("black win")
+            showMyAlert("black win",this.reset)
             this.reset()
         }else if(!isBlackKingAlive){
-            alert("white win")
+            showMyAlert("white win",this.reset)
             this.reset()
         }
     }

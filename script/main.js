@@ -1,4 +1,7 @@
 const BOARD = document.querySelector(".board")
+const MY_ALERT = document.querySelector(".my-alert")
+const ALERT_TEXT=document.querySelector(".my-alert .box p")
+const ALERT_BTN=document.querySelector(".my-alert .box button")
 const LETTERS = ['a','b','c','d','e','f','g','h']
 
 // use loop to create html squres and store in array instead of make it by html then store it in js
@@ -37,6 +40,14 @@ function moveOnBoard(position,x,y){
         and check if this position in the board */
     let newPosition=LETTERS[LETTERS.indexOf(position[0])+x]+(+position[1]+y)
     return isOn(newPosition)?newPosition:false 
+}
+function showMyAlert(text,onConfirm){
+    ALERT_TEXT.innerText=text
+    MY_ALERT.style.display="block"
+    ALERT_BTN.onclick=()=>{
+        MY_ALERT.style.display="none"
+        onConfirm()
+    }
 }
 
 document.addEventListener("keypress",ev=>{
