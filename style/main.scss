@@ -1,5 +1,12 @@
 $transform-duaration:0.6s;
-
+$bar-height:40px;
+$board-size:500px;
+%abosulute-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
 *{
     box-sizing: border-box;
 }
@@ -22,7 +29,7 @@ body{
     }
     background-color: #111;
     h1{
-        color: white;
+        color: #fff;
     }
     .bar{
         color: #fff;
@@ -38,12 +45,12 @@ body{
         left: auto;
         right: auto;
     };
-    width: 500px;
-    height: 600px;
-    border: 2px solid black;
+    width: $board-size;
+    height: calc( $bar-height + $bar-height + $board-size + 4px);
+    border: 2px solid #000;
     .board{
         width: 100%;
-        height: calc(100% - 100px);
+        height: $board-size;
         border-bottom: 2px solid #000;
         display: flex;
         flex-wrap: wrap;
@@ -54,22 +61,16 @@ body{
             position: relative;
             &.dot::after{
                 content: "";
-                position: absolute;
+                @extend %abosulute-center;
                 width: 50%;
                 height: 50%;
                 background-color: #222;
                 opacity: 70%;
                 border-radius: 50%;
                 z-index: 10;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
             }
             img{
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%,-50%);
+                @extend %abosulute-center;
                 width: 60%;
                 height: 80%;
                 background-color: transparent;
@@ -84,14 +85,14 @@ body{
     }
     .bar{
         transition-duration: $transform-duaration;
-        height: 50px;
+        height: $bar-height;
     }
     .upbar{
         p{
             font-size: 17pt;
             margin: 0;
             text-align: center;
-            line-height: 50px;
+            line-height: $bar-height;
         }
     }
     .downbar{
@@ -103,8 +104,8 @@ body{
                 width: 60%;
                 height: 60%;
             }
-            width: 50px;
-            height: 50px;
+            width: $bar-height;
+            height: $bar-height;
             border: none;
         }
     }
