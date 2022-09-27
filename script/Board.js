@@ -31,13 +31,23 @@ class Board{
         this.reset=this.reset.bind(this)
         this.handleClick=this.handleClick.bind(this)
     }
+    selectedPosition
+    availableMoves
     handleClick(position) {
         for(let square in this.htmlSquares){
             this.htmlSquares[square].classList.remove("dot")
         }
-        if (this.map[position]) {
-            let availableMoves=getAvailableMoves(this.map, position)
-            availableMoves.forEach(move=>{this.htmlSquares[move].classList.add("dot")})
+        if (this.map[position]&&!this.selectedPosition) {
+            this.selectedPosition=position
+            this.availableMoves=getAvailableMoves(this.map, position)
+            this.availableMoves.forEach(move=>{this.htmlSquares[move].classList.add("dot")})
+       }else if(this.availableMoves.includes(position)&&this.selectedPosition){
+            this.move(this.selectedPosition,position)
+            this.selectedPosition=undefined
+            this.availableMoves=[]
+        }else{
+            this.selectedPosition=undefined
+            this.availableMoves=[]
        }
     }
     draw(){
