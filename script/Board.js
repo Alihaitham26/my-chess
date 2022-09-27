@@ -30,6 +30,7 @@ class Board{
         this.undo=this.undo.bind(this)
         this.reset=this.reset.bind(this)
         this.handleClick=this.handleClick.bind(this)
+        this.turnViewer=document.getElementById("turn-viewer")
     }
     selectedPosition
     availableMoves
@@ -44,6 +45,7 @@ class Board{
        }else if(this.availableMoves.includes(position)&&this.selectedPosition){
             this.move(this.selectedPosition,position)
             this.isWhiteTurn=!this.isWhiteTurn
+            this.turnViewer.innerText=`${this.isWhiteTurn?"white":"black"} turn`
             this.selectedPosition=undefined
             this.availableMoves=[]
         }else{
