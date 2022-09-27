@@ -5,11 +5,20 @@ function getAvailableMoves(boardMap, position) {
         let y=yDirection
         let moves=[]
         let nextMove=moveOnBoard(position,x,y)
-        while(nextMove&&((!boardMap[nextMove])||(boardMap[nextMove]&&boardMap[nextMove].isWhite!==piece.isWhite))){
-            moves.push(nextMove)
-            x+=xDirection
-            y+=yDirection
-            nextMove=moveOnBoard(position,x,y)
+        while(nextMove){
+            if((!boardMap[nextMove])){
+                moves.push(nextMove)
+                x+=xDirection
+                y+=yDirection
+                nextMove=moveOnBoard(position,x,y)
+            }else if(boardMap[nextMove]&&boardMap[nextMove].isWhite!==piece.isWhite){
+                moves.push(nextMove)
+                x+=xDirection
+                y+=yDirection
+                break
+            }else{
+                break
+            }
         }
         return moves
     }
@@ -49,7 +58,9 @@ function getAvailableMoves(boardMap, position) {
                 moveOnBoard(position,1,-2),
                 moveOnBoard(position,-1,2),
                 moveOnBoard(position,-1,-2)]
-            moves.filter(move=>move&&!boardMap[move]).forEach(move=>{availableMoves.push(move)})
+            availableMoves=moves.filter(
+                move=>move&&(!boardMap[move]||boardMap[move].isWhite!==piece.isWhite)
+                )
             break
         case "rook":
             availableMoves=[...getMovesArray(1,0),...getMovesArray(0,1),...getMovesArray(-1,0),...getMovesArray(0,-1)]
@@ -62,9 +73,9 @@ function getAvailableMoves(boardMap, position) {
             break
         case "king":
             let kingMoves=[moveOnBoard(position,1,1),moveOnBoard(position,-1,-1),moveOnBoard(position,-1,1),moveOnBoard(position,1,-1),moveOnBoard(position,1,0),moveOnBoard(position,0,1),moveOnBoard(position,-1,0),moveOnBoard(position,0,-1)]
-            kingMoves.filter(move=>
+            availableMoves=kingMoves.filter(move=>
                     move&&((!boardMap[move])||(boardMap[move]&&boardMap[move].isWhite!==piece.isWhite))
-                ).forEach(move=>{availableMoves.push(move)})
+                )
     }
     return availableMoves
 }
