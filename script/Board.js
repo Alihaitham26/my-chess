@@ -101,10 +101,8 @@ class Board{
         }
         if(!isWhiteKingAlive){
             showMyAlert("black win",this.reset)
-            this.reset()
         }else if(!isBlackKingAlive){
             showMyAlert("white win",this.reset)
-            this.reset()
         }
     }
 }
