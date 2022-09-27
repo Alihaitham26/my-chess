@@ -46,6 +46,7 @@ class Board{
             this.move(this.selectedPosition,position)
             this.isWhiteTurn=!this.isWhiteTurn
             this.turnViewer.innerText=`${this.isWhiteTurn?"white":"black"} turn`
+            this.afterTurn()
             this.selectedPosition=undefined
             this.availableMoves=[]
         }else{
@@ -87,5 +88,22 @@ class Board{
         this.map=Board.initBoardMap
         this.mapLog=[]
         this.draw()
+    }
+    afterTurn(){
+        let isWhiteKingAlive=false
+        let isBlackKingAlive=false
+        for(let square in this.map){
+            let piece=this.map[square]
+            if(piece.type==="king"){
+                piece.isWhite?isWhiteKingAlive=true:isBlackKingAlive=true
+            }
+        }
+        if(!isWhiteKingAlive){
+            alert("black win")
+            this.reset()
+        }else if(!isBlackKingAlive){
+            alert("white win")
+            this.reset()
+        }
     }
 }
