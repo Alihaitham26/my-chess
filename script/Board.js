@@ -37,12 +37,13 @@ class Board{
         for(let square in this.htmlSquares){
             this.htmlSquares[square].classList.remove("dot")
         }
-        if (this.map[position]&&!this.selectedPosition) {
+        if (this.map[position]&&!this.selectedPosition&&this.map[position].isWhite===this.isWhiteTurn) {
             this.selectedPosition=position
             this.availableMoves=getAvailableMoves(this.map, position)
             this.availableMoves.forEach(move=>{this.htmlSquares[move].classList.add("dot")})
        }else if(this.availableMoves.includes(position)&&this.selectedPosition){
             this.move(this.selectedPosition,position)
+            this.isWhiteTurn=!this.isWhiteTurn
             this.selectedPosition=undefined
             this.availableMoves=[]
         }else{
@@ -79,7 +80,8 @@ class Board{
         }
     }
     reset(){
-        // reset variables that control the game proggress 
+        // reset variables that control the game proggress
+        this.isWhiteTurn=true
         this.map=Board.initBoardMap
         this.mapLog=[]
         this.draw()
