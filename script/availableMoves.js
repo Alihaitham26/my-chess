@@ -1,4 +1,4 @@
-function getAvailableMoves(boardMap, position) {
+function getAvailableMoves(boardMap, position,autoMove) {
     let getMovesArray=(xDirection,yDirection)=>{
         //function to move in x or/and y untill find peice so that stop and return moves
         let x=xDirection
@@ -76,6 +76,24 @@ function getAvailableMoves(boardMap, position) {
             availableMoves=kingMoves.filter(move=>
                     move&&((!boardMap[move])||(boardMap[move]&&boardMap[move].isWhite!==piece.isWhite))
                 )
+            let row=piece.isWhite?1:8
+            let r=row
+            let rightRook=boardMap["h"+r]
+            let leftRook=boardMap["a"+r]
+            if(
+                piece.movesLog.length==0
+                &&!boardMap["b"+r]&&!boardMap["c"+r]&&!boardMap["d"+r]
+                &&leftRook&&leftRook.type==="rook"&&leftRook.movesLog.length===0){
+                    // left rook special move
+                    console.log("left rook special move")
+                }
+            if(
+                piece.movesLog.length==0
+                &&!boardMap["f"+r]&&!boardMap["g"+r]
+                &&rightRook&&rightRook.type==="rook"&&rightRook.movesLog.length===0){
+                    // right rook special move
+                    console.log("right rook special move")
+                }
     }
     return availableMoves
 }

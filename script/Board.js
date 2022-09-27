@@ -33,7 +33,7 @@ class Board{
         this.handleClick=this.handleClick.bind(this)
     }
     selectedPosition
-    availableMoves
+    availableMoves=[]
     handleClick(position) {
         for(let square in this.htmlSquares){
             this.htmlSquares[square].classList.remove("dot")
