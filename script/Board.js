@@ -35,7 +35,6 @@ class Board{
     selectedPosition
     availableMoves=[]
     handleClick(position) {
-
         for(let square in this.htmlSquares){
             this.htmlSquares[square].classList.remove("dot")
         }
@@ -103,6 +102,7 @@ class Board{
         this.draw()
     }
     afterTurn(){
+        // function after every turn to check win
         let isWhiteKingAlive=false
         let isBlackKingAlive=false
         for(let square in this.map){
