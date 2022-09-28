@@ -35,6 +35,7 @@ class Board{
     selectedPosition
     availableMoves=[]
     handleClick(position) {
+
         for(let square in this.htmlSquares){
             this.htmlSquares[square].classList.remove("dot")
         }
@@ -43,6 +44,17 @@ class Board{
             this.availableMoves=getAvailableMoves(this.map, position)
             this.availableMoves.forEach(move=>{this.htmlSquares[move].classList.add("dot")})
        }else if(this.availableMoves.includes(position)&&this.selectedPosition){
+            let piece = this.map[this.selectedPosition]
+            if(piece.type==="king"){
+                let row=piece.isWhite?1:8
+                if(this.selectedPosition==="e"+row){
+                    if(position==="c"+row){
+                        this.move("a"+row,"d"+row)
+                    }else if(position==="g"+row){
+                        this.move("h"+row,"f"+row)
+                    }
+                }
+            }
             this.move(this.selectedPosition,position)
             this.isWhiteTurn=!this.isWhiteTurn
             this.turnViewer.innerText=`${this.isWhiteTurn?"white":"black"} turn`

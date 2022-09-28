@@ -85,14 +85,14 @@ function getAvailableMoves(boardMap, position,autoMove) {
                 &&!boardMap["b"+r]&&!boardMap["c"+r]&&!boardMap["d"+r]
                 &&leftRook&&leftRook.type==="rook"&&leftRook.movesLog.length===0){
                     // left rook special move
-                    console.log("left rook special move")
+                    availableMoves.push("c"+r)
                 }
             if(
                 piece.movesLog.length==0
                 &&!boardMap["f"+r]&&!boardMap["g"+r]
                 &&rightRook&&rightRook.type==="rook"&&rightRook.movesLog.length===0){
                     // right rook special move
-                    console.log("right rook special move")
+                    availableMoves.push("g"+r)
                 }
     }
     return availableMoves
