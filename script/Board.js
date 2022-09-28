@@ -54,6 +54,14 @@ class Board{
                     }
                 }
             }
+            if(piece.type==="pawn"){
+                let leftPawn=moveOnBoard(this.selectedPosition,-1,piece.isWhite?1:-1)
+                let rightPawn=moveOnBoard(this.selectedPosition,1,piece.isWhite?1:-1)
+                if((position===leftPawn&&!this.map[leftPawn])||(position===rightPawn&&!this.map[rightPawn])){
+                    delete(this.map[moveOnBoard(position,0,(this.isWhite?1:-1))])
+                    this.draw()
+                }
+            }
             this.move(this.selectedPosition,position)
             this.isWhiteTurn=!this.isWhiteTurn
             this.turnViewer.innerText=`${this.isWhiteTurn?"white":"black"} turn`
@@ -100,6 +108,9 @@ class Board{
         this.turnViewer.innerText="white turn"
         this.map=Board.initBoardMap
         this.mapLog=[]
+        for(let key in this.map){
+            this.map[key].movesLog[0]=key
+        }
         this.draw()
     }
     afterTurn(){

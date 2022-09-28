@@ -30,7 +30,7 @@ function getAvailableMoves(boardMap, position,autoMove) {
             let yDeriction=boardMap[position].isWhite?1:-1
             let front=moveOnBoard(position,0,yDeriction)
             let superFront
-            if(piece.movesLog.length===0&&piece.movesLog.length===0){
+            if(piece.movesLog.length===1){
                 superFront=moveOnBoard(position,0,yDeriction*2)
             }
             if(front&&!boardMap[front]){
@@ -46,6 +46,26 @@ function getAvailableMoves(boardMap, position,autoMove) {
             }
             if(boardMap[right]&&boardMap[right].isWhite!==piece.isWhite){
                 availableMoves.push(right)
+            }
+            let leftPawn = moveOnBoard(position,-1,0)
+            let rightPawn = moveOnBoard(position,1,0)
+            if(
+                piece.movesLog[0][0]===position[0]&&position[1]===(piece.isWhite?"5":"4")
+                &&boardMap[leftPawn]
+                &&boardMap[leftPawn].type==="pawn"
+                &&boardMap[leftPawn].movesLog.length===2
+                &&board.mapLog[board.mapLog.length - 2][leftPawn]!==boardMap[leftPawn]
+                ){
+                    availableMoves.push(moveOnBoard(position,-1,yDeriction))
+            }
+            if(
+                piece.movesLog[0][0]===position[0]&&position[1]===(piece.isWhite?"5":"4")
+                &&boardMap[rightPawn]
+                &&boardMap[rightPawn].type==="pawn"
+                &&boardMap[rightPawn].movesLog.length===2
+                &&board.mapLog[board.mapLog.length - 2][rightPawn]!==boardMap[rightPawn]
+                ){
+                    availableMoves.push(moveOnBoard(position,1,yDeriction))
             }
             break
         case "knight":
