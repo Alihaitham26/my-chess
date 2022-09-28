@@ -3,7 +3,13 @@ const BOARD = document.querySelector(".board")
 const MY_ALERT = document.querySelector(".my-alert")
 const ALERT_TEXT=document.querySelector(".my-alert .box p")
 const ALERT_BTN=document.querySelector(".my-alert .box button")
-
+const UPGRADE_BOX=document.querySelector(".pawn-upgrade")
+const UPGRADE_IMGS={
+    queen:document.getElementById("queen"),
+    knight:document.getElementById("knight"),
+    bishop:document.getElementById("bishop"),
+    rook:document.getElementById("rook")
+}
 // constant variables
 const LETTERS = ['a','b','c','d','e','f','g','h']
 
@@ -56,6 +62,17 @@ function showMyAlert(text,onConfirm){
     }
 }
 
+function showUpgradePawn(isWhite,pawmPosition){
+    UPGRADE_BOX.style.display="block"
+    for(let key in UPGRADE_IMGS){
+        let img=UPGRADE_IMGS[key]
+        img.src=`assist/${isWhite?"w":"b"}_${img.dataset.type}.png`
+        img.onclick=()=>{
+            UPGRADE_BOX.style.display="none"
+            board.upgradePawn(img.dataset.type,pawmPosition)
+        }
+    }
+}
 // make t key toggle theme onclick
 document.addEventListener("keypress",ev=>{
     if(ev.code==="KeyT"){

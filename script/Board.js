@@ -95,6 +95,7 @@ class Board{
     }
     reset(){
         // reset variables that control the game proggress
+        console.clear()
         this.isWhiteTurn=true
         this.turnViewer.innerText="white turn"
         this.map=Board.initBoardMap
@@ -110,11 +111,18 @@ class Board{
             if(piece.type==="king"){
                 piece.isWhite?isWhiteKingAlive=true:isBlackKingAlive=true
             }
+            if(square[1]===(piece.isWhite?"8":"1")&&piece.type==="pawn"){
+                showUpgradePawn(piece.isWhite,square)
+            }
         }
         if(!isWhiteKingAlive){
             showMyAlert("black win",this.reset)
         }else if(!isBlackKingAlive){
             showMyAlert("white win",this.reset)
         }
+    }
+    upgradePawn(to,pawnPosition){
+        this.map[pawnPosition]=new Piece(to,!this.isWhiteTurn)
+        this.draw()
     }
 }
