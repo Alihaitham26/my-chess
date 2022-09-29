@@ -150,7 +150,7 @@ class Board{
                         this.turnViewer.innerText="white king in check"
                     }else if(!piece.isWhite&&availavbleMoves[i]===whiteKingPosition){
                         this.htmlSquares[whiteKingPosition].classList.add("danger")
-                        this.turnViewer.innerText="white king in check"
+                        this.turnViewer.innerText="black king in check"
                     }
                 }
             }
