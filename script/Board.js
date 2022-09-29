@@ -115,12 +115,20 @@ class Board{
     }
     afterTurn(){
         // function after every turn to check win
+        let whiteKingPosition
+        let blackKingPosition
         let isWhiteKingAlive=false
         let isBlackKingAlive=false
         for(let square in this.map){
             let piece=this.map[square]
             if(piece.type==="king"){
-                piece.isWhite?isWhiteKingAlive=true:isBlackKingAlive=true
+                if(piece.isWhite){
+                    whiteKingPosition=square
+                    isWhiteKingAlive=true
+                }else{
+                    blackKingPosition=square
+                    isBlackKingAlive=true
+                }
             }
             if(square[1]===(piece.isWhite?"8":"1")&&piece.type==="pawn"){
                 showUpgradePawn(piece.isWhite,square)
@@ -130,6 +138,22 @@ class Board{
             showMyAlert("black win",this.reset)
         }else if(!isBlackKingAlive){
             showMyAlert("white win",this.reset)
+        }else{
+            this.htmlSquares[blackKingPosition].classList.remove("danger")
+            this.htmlSquares[whiteKingPosition].classList.remove("danger")
+            for(let square in this.map){
+                let piece=this.map[square]
+                let availavbleMoves=getAvailableMoves(this.map,square)
+                for(let i = 0;i<availavbleMoves.length;i++){
+                    if(piece.isWhite&&availavbleMoves[i]===blackKingPosition){
+                        this.htmlSquares[blackKingPosition].classList.add("danger")
+                        this.turnViewer.innerText="white king in check"
+                    }else if(!piece.isWhite&&availavbleMoves[i]===whiteKingPosition){
+                        this.htmlSquares[whiteKingPosition].classList.add("danger")
+                        this.turnViewer.innerText="white king in check"
+                    }
+                }
+            }
         }
     }
     upgradePawn(to,pawnPosition){

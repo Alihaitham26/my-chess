@@ -1,7 +1,10 @@
 # my-chess 
-## V0.9.0
+## V0.9.5
 ## what is this?
 mychess is a web project to make chess by vanilajs and sass(scss) and html without any framework
+## what is new?
+### v0.9.5
+1. make border red around king when he is in check
 ## details
 to see more details switch to [development](https://github.com/Alihaitham26/myChess/tree/development) branch
 ## run in your device
