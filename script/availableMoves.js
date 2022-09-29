@@ -1,4 +1,4 @@
-function getAvailableMoves(boardMap, position,autoMove) {
+function getAvailableMoves(boardMap, position) {
     let getMovesArray=(xDirection,yDirection)=>{
         //function to move in x or/and y untill find peice so that stop and return moves
         let x=xDirection

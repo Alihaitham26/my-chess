@@ -76,6 +76,14 @@ body{
                 height: 80%;
                 background-color: transparent;
             }
+            &.danger{
+                $danger-border:3px;
+                border: $danger-border solid #dc3545;
+                img{
+                    width: calc(60% + $danger-border * 1.2);
+                    height: calc(80% + $danger-border * 1.6);
+                }
+            }
         }
         .white{
             background-color: #e3c16f;
