@@ -139,8 +139,7 @@ class Board{
         }else if(!isBlackKingAlive){
             showMyAlert("white win",this.reset)
         }else{
-            this.htmlSquares[blackKingPosition].classList.remove("danger")
-            this.htmlSquares[whiteKingPosition].classList.remove("danger")
+            document.querySelectorAll(".danger").forEach(el=>el.classList.remove("danger"))
             for(let square in this.map){
                 let piece=this.map[square]
                 let availavbleMoves=getAvailableMoves(this.map,square)
