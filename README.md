@@ -3,7 +3,11 @@
 ## what is this?
 mychess is a web project to make chess by vanilajs and sass(scss) and html without any framework
 ## what is new?
-### v0.9.5
+### V0.9.6
+fix some issues :-
+1. fix up bar because he show king white in check in all cases
+2. fix check border because it wasn't removed if king move from his position
+### V0.9.5
 1. make border red around king when he is in check
 ## details
 to see more details switch to [development](https://github.com/Alihaitham26/myChess/tree/development) branch
