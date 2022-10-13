@@ -10,7 +10,7 @@ class Piece{
         this.type=type
         this.isWhite=isWhite
         this.movesLog=[]
-        this.img=`${isWhite?"w":"b"}_${type}.png`
+        this.img=`pieces/${isWhite?"white":"black"}/${type}.png`
     }
     move(position){
         // save last move to use it in special move

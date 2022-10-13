@@ -4,6 +4,7 @@ const MY_ALERT = document.querySelector(".my-alert")
 const ALERT_TEXT=document.querySelector(".my-alert .box p")
 const ALERT_BTN=document.querySelector(".my-alert .box button")
 const UPGRADE_BOX=document.querySelector(".pawn-upgrade")
+let theme=localStorage.getItem("theme")||"light"
 const UPGRADE_IMGS={
     queen:document.getElementById("queen"),
     knight:document.getElementById("knight"),
@@ -33,15 +34,19 @@ function toggleTheme(){
     if(document.body.classList.contains("light")){
         document.body.classList.remove("light")
         document.body.classList.add("dark")
-        document.getElementById("themeImg").src="assist/sun-solid.svg"
+        document.getElementById("themeImg").src="assist/icons/sun-solid.svg"
+        localStorage.setItem("theme","dark")
     }
     else if(document.body.classList.contains("dark")){
         document.body.classList.remove("dark")
         document.body.classList.add("light")
-        document.getElementById("themeImg").src="assist/moon-solid.svg"
+        document.getElementById("themeImg").src="assist/icons/moon-solid.svg"
+        localStorage.setItem("theme","light")
     }
 }
-
+if(theme==="dark"){
+    toggleTheme()
+}
 
 let isOn=position=>(/^[a-h][1-8]$/).test(position)
 
@@ -66,7 +71,7 @@ function showUpgradePawn(isWhite,pawmPosition){
     UPGRADE_BOX.style.display="block"
     for(let key in UPGRADE_IMGS){
         let img=UPGRADE_IMGS[key]
-        img.src=`assist/${isWhite?"w":"b"}_${img.dataset.type}.png`
+        img.src=`assist/pieces/${isWhite?"white":"black"}/${img.dataset.type}.png`
         img.onclick=()=>{
             UPGRADE_BOX.style.display="none"
             board.upgradePawn(img.dataset.type,pawmPosition)

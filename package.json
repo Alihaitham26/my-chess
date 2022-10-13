@@ -1,0 +1,25 @@
+{
+  "name": "my-chess",
+  "version": "0.9.5",
+  "description": "chess game with html scss vanila js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alihaitham26/myChess.git"
+  },
+  "keywords": [
+    "chess",
+    "vanilajs",
+    "sass",
+    "html"
+  ],
+  "author": "ali haitham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alihaitham26/myChess/issues"
+  },
+  "homepage": "https://github.com/Alihaitham26/myChess#readme"
+}
