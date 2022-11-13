@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my chess</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body class="light">
+    <h1>my chess</h1>
+    <div class="container">
+        <div class="upbar bar"><p id="turn-viewer">white turn</p></div>
+        <div class="board"></div>
+        <div class="downbar bar">
+            <button id="undo"><img src="assist/icons/arrow-left-solid.svg" alt="undo"></button>
+            <button id="theme"><img src="assist/icons/moon-solid.svg" alt="toggle theme" id="themeImg"></button>
+            <button id="reset"> <img src="assist/icons/rotate-left-solid.svg" alt="reset game"> </button>
+        </div>
+    </div>
+    <div class="my-alert">
+        <div class="shadow-layer"></div>
+        <div class="box">
+            <p>white win</p>
+            <button>ok!</button>
+        </div>
+    </div>
+    <div class="pawn-upgrade">
+        <div class="shadow-layer"></div>
+        <div class="box">
+            <h2>upgrade pawn</h2>
+            <div class="images">
+                <img src="" data-type="queen"  id="queen" >
+                <img src="" data-type="knight" id="knight">
+                <img src="" data-type="bishop" id="bishop">
+                <img src="" data-type="rook"   id="rook"  >
+            </div>
+        </div>
+    </div>
+    <script src="script/availableMoves.js"></script>
+    <script src="script/Piece.js"></script>
+    <script src="script/Board.js"></script>
+    <script src="script/main.js"></script>
+</body>
+</html>
