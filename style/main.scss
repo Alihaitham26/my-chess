@@ -47,7 +47,7 @@ body{
         right: auto;
     };
     width: $board-size;
-    height: calc( $bar-height + $bar-height + $board-size + 4px);
+    height: calc( $board-size * 1.14 );
     border: 2px solid #000;
     @media (max-width:600px) {
         width: 320px;
@@ -55,8 +55,7 @@ body{
     }
     .board{
         width: 100%;
-        height: $board-size;
-        max-height: 80%;
+        height: 86%;
         border-bottom: 2px solid #000;
         display: flex;
         flex-wrap: wrap;
@@ -99,8 +98,7 @@ body{
     }
     .bar{
         transition-duration: $transform-duaration;
-        height: $bar-height;
-        max-height: 10%;
+        height: 7%;
     }
     .upbar{
         p{
