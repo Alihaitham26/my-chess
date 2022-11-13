@@ -49,9 +49,14 @@ body{
     width: $board-size;
     height: calc( $bar-height + $bar-height + $board-size + 4px);
     border: 2px solid #000;
+    @media (max-width:600px) {
+        width: 320px;
+        height: 350px;
+    }
     .board{
         width: 100%;
         height: $board-size;
+        max-height: 80%;
         border-bottom: 2px solid #000;
         display: flex;
         flex-wrap: wrap;
@@ -95,13 +100,15 @@ body{
     .bar{
         transition-duration: $transform-duaration;
         height: $bar-height;
+        max-height: 10%;
     }
     .upbar{
         p{
             font-size: 17pt;
             margin: 0;
-            text-align: center;
-            line-height: $bar-height;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
         }
     }
     .downbar{
@@ -113,18 +120,13 @@ body{
                 width: 60%;
                 height: 60%;
             }
-            width: $bar-height;
-            height: $bar-height;
+            aspect-ratio: 1;
+            height: 100%;
             border: none;
         }
     }
 }
-@media (max-width:600px) {
-    .container{
-        width: 300px;
-        height: 350px;
-    }
-}
+
 .shadow-layer{
     position: absolute;
     z-index: 100;
